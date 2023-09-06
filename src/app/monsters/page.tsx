@@ -1,10 +1,4 @@
-async function getData() {
-  const res = await fetch("https://mhw-db.com/monsters");
-  if (!res.ok) {
-    throw new Error("Failed to fetch data");
-  }
-  return res.json();
-}
+import { getData } from "@/helpers/getData";
 
 interface IMonster {
   name: string
@@ -12,7 +6,7 @@ interface IMonster {
 }
 
 export default async function Monsters() {
-  const data = await getData();
+  const data = await getData('/monsters');
   return (
     <div>
       <h1>Monsters</h1>
