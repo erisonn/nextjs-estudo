@@ -1,14 +1,37 @@
-import Link from "next/link";
 import styles from "./index.module.scss";
+import ActiveLink from "../ActiveLink";
 
 const AppHeader = () => {
+  const links = [
+    {
+      label: "Home",
+      to: "/",
+    },
+    {
+      label: "Monsters",
+      to: "/monsters",
+    },
+    {
+      label: "Weapons",
+      to: "/weapons",
+    },
+    {
+      label: "Armor Sets",
+      to: "/armor-sets",
+    },
+    {
+      label: "Skills",
+      to: "/skills",
+    },
+  ];
+
   return (
     <div className={styles.appHeader}>
-      <Link href="/">Home</Link>
-      <Link href="/monsters">Monsters</Link>
-      <Link href="/weapons">Weapons</Link>
-      <Link href="/armor-sets">Armor Sets</Link>
-      <Link href="/skills">Skills</Link>
+      {links.map((link) => (
+        <ActiveLink url={link.to} activeClassName={styles.active}>
+          {link.label}
+        </ActiveLink>
+      ))}
     </div>
   );
 };
